@@ -225,10 +225,24 @@ draw.text((130, 20), "应  用  开  发", (0,0,0), font=font2)
 # 应用部署标题
 draw.text((470, 20), "应  用  部  署", (0,0,0), font=font2)
 
+# 添加箭头顺序
+draw.text((345, 100), "①", (0,0,0), font=font1)
+draw.text((347, 230), "②", (0,0,0), font=font1)
+draw.text((630, 280), "③", (0,0,0), font=font1)
+draw.text((395, 195), "④", (0,0,0), font=font1)
+
 img = cv2.cvtColor(np.array(pil_im), cv2.COLOR_BGR2RGB)
 
 # 绘制箭头
-img = cv2.arrowedLine(img, (335,127), (375,127), (0,0,0), 2, tipLength = 0.2)  
+# 应用开发到应用部署
+img = cv2.arrowedLine(img, (335,127), (375,127), (0,0,0), 2, tipLength = 0.2)
+# 应用部署到运行时  
+img = cv2.arrowedLine(img, (377,185), (377,300), (0,0,0), 2, tipLength = 0.1)  
+# 运行时到评测器
+img = cv2.arrowedLine(img, (750,300), (550,250), (0,0,0), 2, tipLength = 0.05)  
+# 评测器到部署器
+img = cv2.arrowedLine(img, (390,230), (390,180), (0,0,0), 2, tipLength = 0.2)  
 
 # 保存图片
 cv2.imwrite("1.png", img)
+
